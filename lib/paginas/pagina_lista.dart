@@ -46,7 +46,7 @@ class _Pagina_listaState extends State<Pagina_lista> {
                       mensagensControlador.clear();
                     },
                     style: ElevatedButton.styleFrom(
-                        primary:  Color.fromARGB(255, 250, 0, 175),
+                        primary: Color.fromARGB(255, 250, 0, 175),
                         padding: EdgeInsets.all(20)),
                     child: Icon(
                       Icons.add,
@@ -62,10 +62,10 @@ class _Pagina_listaState extends State<Pagina_lista> {
                 child: ListView(
                   shrinkWrap: true,
                   children: [
-                      for (Data_Hora mensagem_controle in Mensagens)
+                    for (Data_Hora mensagem_controle in Mensagens)
                       TudoItemLista(
                         mensagem_data_hora: mensagem_controle,
-                        item_deletar_tarefas: deletar_tarefas,                       
+                        item_deletar_tarefas: deletar_tarefas,
                       ),
                   ],
                 ),
@@ -82,7 +82,7 @@ class _Pagina_listaState extends State<Pagina_lista> {
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                        primary:  Color.fromARGB(255, 250, 0, 175),
+                        primary: Color.fromARGB(255, 250, 0, 175),
                         padding: EdgeInsets.all(20)),
                     child: Text("Limpar"),
                   ),
@@ -94,11 +94,17 @@ class _Pagina_listaState extends State<Pagina_lista> {
       ),
     );
   }
-    void deletar_tarefas(Data_Hora item_data_hora) {
+
+  void deletar_tarefas(Data_Hora item_data_hora) {
     setState(() {
       Mensagens.remove(item_data_hora);
     });
-    
-  }
 
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content:
+            Text("Tarefa ${item_data_hora.titulo} foi removida com sucesso"),
+      ),
+    );
+  }
 }
