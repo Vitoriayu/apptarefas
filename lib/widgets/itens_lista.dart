@@ -1,31 +1,37 @@
 import 'package:app_lista_tarefas/modelo/objeto_data_hora.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
- 
+import 'package:intl/intl.dart';
 
-class tudoItemLista extends StatelessWidget {
-  const tudoItemLista({super.key, required this.mensagem_data_hora});
+class TudoItemLista extends StatelessWidget {
+  const TudoItemLista({
+    super.key,
+    required this.mensagem_data_hora,
+    required this.item_deletar_tarefas,
+  });
 
   final Data_Hora mensagem_data_hora;
+  final Function(Data_Hora) item_deletar_tarefas;
 
   @override
   Widget build(BuildContext context) {
     return Slidable(
-      endActionPane: const ActionPane(
-        motion: ScrollMotion(),
+      endActionPane: ActionPane(
+        motion: const ScrollMotion(),
         children: [
           SlidableAction(
             flex: 2,
-            onPressed: null,
-            backgroundColor: Color.fromARGB(255, 219, 69, 52),
-            foregroundColor: Color.fromARGB(255, 228, 211, 57),
+            onPressed: (context) {
+              item_deletar_tarefas(mensagem_data_hora);
+            },
+           backgroundColor: Color.fromARGB(255, 124, 52, 219),
+            foregroundColor: Color.fromARGB(255, 57, 228, 157),
             icon: Icons.delete,
             label: 'Deletar',
           ),
         ],
       ),
-      child: Padding(
+        child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
           decoration: BoxDecoration(

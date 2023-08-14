@@ -62,9 +62,10 @@ class _Pagina_listaState extends State<Pagina_lista> {
                 child: ListView(
                   shrinkWrap: true,
                   children: [
-                    for (Data_Hora item_data_hora in Mensagens)
-                      tudoItemLista(
-                        mensagem_data_hora: item_data_hora,
+                      for (Data_Hora mensagem_controle in Mensagens)
+                      TudoItemLista(
+                        mensagem_data_hora: mensagem_controle,
+                        item_deletar_tarefas: deletar_tarefas,                       
                       ),
                   ],
                 ),
@@ -93,4 +94,11 @@ class _Pagina_listaState extends State<Pagina_lista> {
       ),
     );
   }
+    void deletar_tarefas(Data_Hora item_data_hora) {
+    setState(() {
+      Mensagens.remove(item_data_hora);
+    });
+    
+  }
+
 }
