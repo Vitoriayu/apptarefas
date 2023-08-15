@@ -95,15 +95,17 @@ class _Pagina_listaState extends State<Pagina_lista> {
     );
   }
 
-  void deletar_tarefas(Data_Hora item_data_hora) {
+    void deletar_tarefas(Data_Hora item_data_hora) {
     setState(() {
       Mensagens.remove(item_data_hora);
     });
-
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content:
-            Text("Tarefa ${item_data_hora.titulo} foi removida com sucesso"),
+        content: Text(
+          "Tarefa ${item_data_hora.titulo} foi removida com sucesso",
+          style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w600),
+        ),
+        backgroundColor: Color.fromARGB(204, 47, 238, 212),
       ),
     );
   }
