@@ -3,12 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 
-class TudoItemLista extends StatelessWidget {
-  const TudoItemLista({
-    super.key,
-    required this.mensagem_data_hora,
-    required this.item_deletar_tarefas,
-  });
+class tudoItemLista extends StatelessWidget {
+  const tudoItemLista({super.key, required this.mensagem_data_hora,
+  required this.item_deletar_tarefas,});
 
   final Data_Hora mensagem_data_hora;
   final Function(Data_Hora) item_deletar_tarefas;
